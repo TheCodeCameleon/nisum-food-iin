@@ -1,6 +1,6 @@
 package com.nisum.foodcourt.entity;
 
-import com.nisum.foodcourt.BaseModal.BaseEntity;
+import com.nisum.foodcourt.BaseModal.BaseAuditableEntity;
 import com.nisum.foodcourt.resource.constant.RoleName;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -15,8 +15,9 @@ import javax.persistence.*;
 @Table(name = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Role extends BaseEntity {
+public class Role extends BaseAuditableEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
@@ -34,7 +35,7 @@ public class Role extends BaseEntity {
         Role role = (Role) o;
 
         return new EqualsBuilder()
-                .append(id,role.id)
+                .append(id, role.id)
                 .append(roleName, role.roleName)
                 .append(description, role.description)
                 .isEquals();
