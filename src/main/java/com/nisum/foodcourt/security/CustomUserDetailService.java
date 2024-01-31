@@ -1,9 +1,9 @@
 package com.nisum.foodcourt.security;
 
 import com.nisum.foodcourt.entity.User;
-import com.nisum.foodcourt.service.UserPrincipal;
 import com.nisum.foodcourt.repository.UserRepository;
 import com.nisum.foodcourt.resource.ResponseExceptionMessage;
+import com.nisum.foodcourt.service.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,10 +19,10 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String usernameOrEmployeeId) throws UsernameNotFoundException{
+    public UserDetails loadUserByUsername(String usernameOrEmployeeId) throws UsernameNotFoundException {
 
         User user = userRepository.findByUserNameOrEmployeeId(usernameOrEmployeeId, usernameOrEmployeeId)
-                .orElseThrow(() -> new UsernameNotFoundException(ResponseExceptionMessage.USER_NOT_FOUND.getException() + " : " + usernameOrEmployeeId));
+                .orElseThrow(() -> new UsernameNotFoundException(ResponseExceptionMessage.USER_NOT_FOUND.getMessage() + " : " + usernameOrEmployeeId));
 
         return UserPrincipal.createPrincipal(user);
     }

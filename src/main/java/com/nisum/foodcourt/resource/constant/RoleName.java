@@ -1,10 +1,13 @@
 package com.nisum.foodcourt.resource.constant;
 
-import lombok.Data;
+/**
+ * @author asadkhan
+ */
 
 public enum RoleName {
 
-    ADMIN, EMPLOYEE, STAFF;
+    ADMIN,
+    EMPLOYEE,
+    STAFF;
 
-    String name;
 }

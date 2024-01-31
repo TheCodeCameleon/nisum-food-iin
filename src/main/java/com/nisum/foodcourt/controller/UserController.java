@@ -1,25 +1,38 @@
 package com.nisum.foodcourt.controller;
 
 
+import com.nisum.foodcourt.model.UserDto;
 import com.nisum.foodcourt.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
-@RequestMapping(value = "/user")
+@RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
+    @GetMapping
+    public ResponseEntity<?> getAllUsersList() {
+        return userService.getAllUsersList();
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") Integer userId) {
         return userService.getUserById(userId);
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> updateUser(@RequestBody UserDto userDTO) {
+        return userService.updateUser(userDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Integer userId) {
+        return userService.deleteUser(userId);
     }
 
 }

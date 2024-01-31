@@ -1,4 +1,4 @@
-package com.nisum.foodcourt.modal;
+package com.nisum.foodcourt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

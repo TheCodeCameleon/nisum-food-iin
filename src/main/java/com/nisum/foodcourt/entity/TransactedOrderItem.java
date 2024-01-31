@@ -4,21 +4,20 @@ import com.nisum.foodcourt.BaseModal.BaseAuditableEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name = "MenuItem")
-@Entity
 @Getter
 @Setter
+@Table(name = "TransactedOrderItems")
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MenuItem extends BaseAuditableEntity {
+public class TransactedOrderItem extends BaseAuditableEntity {
 
     @Column(name = "menu_item")
     String menuName;
@@ -26,7 +25,7 @@ public class MenuItem extends BaseAuditableEntity {
     @Column(name = "price")
     Double price;
 
-    @Column(name = "availability")
-    int availability = 1;
+    @Column(name = "quantity")
+    int quantity;
 
 }

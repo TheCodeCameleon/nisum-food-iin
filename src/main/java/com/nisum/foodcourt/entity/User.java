@@ -1,16 +1,15 @@
 package com.nisum.foodcourt.entity;
 
-import com.nisum.foodcourt.BaseModal.BaseEntity;
+import com.nisum.foodcourt.BaseModal.BaseAuditableEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.apache.commons.lang3.time.DateUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,9 +30,9 @@ import java.util.*;
 /**
  * @author Asad Khan
  */
-public class User extends BaseEntity {
+public class User extends BaseAuditableEntity {
 
-    @NotBlank
+    @NotBlank(message = "username should not be empty")
     @Column(name = "user_name")
     String userName;
 
@@ -61,10 +60,10 @@ public class User extends BaseEntity {
     @JoinColumn(name = "floor_id")
     Floor floor;
 
-    int status;
+    @OneToOne(fetch = FetchType.LAZY)
+    Wallet wallet;
 
-    @Column(name = "created_at")
-    Timestamp createdAt;
+    int status;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -74,10 +73,5 @@ public class User extends BaseEntity {
 
     @Column(name = "is_profileSet")
     int isProfileSet = 0;
-
-    @PrePersist
-    protected void onUserPersist() {
-        createdAt = new Timestamp(new Date().getTime());
-    }
 
 }

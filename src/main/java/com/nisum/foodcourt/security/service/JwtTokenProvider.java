@@ -1,10 +1,9 @@
 package com.nisum.foodcourt.security.service;
 
-import com.nisum.foodcourt.service.UserPrincipal;
-
 import com.nisum.foodcourt.resource.constant.SecurityClaim;
 import com.nisum.foodcourt.resource.constant.SecurityExceptionMessages;
-import com.nisum.foodcourt.resource.utils.DateUtil;
+import com.nisum.foodcourt.resource.util.DateUtil;
+import com.nisum.foodcourt.service.UserPrincipal;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.rmi.server.UID;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.*;
 
 @Slf4j
 @Component
@@ -31,7 +31,6 @@ public class JwtTokenProvider {
 
     @Autowired
     private DateUtil dateUtility;
-
 
 
     public String generateToken(UserPrincipal userPrincipal) {
@@ -108,7 +107,7 @@ public class JwtTokenProvider {
     }
 
     private <T> T extractSpecifiedClaim(String token, Function<Claims, T> claimResolver) {
-        final Claims claims= getAllClaimsFromToken(token);
+        final Claims claims = getAllClaimsFromToken(token);
         return claimResolver.apply(claims);
     }
 

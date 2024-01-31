@@ -1,4 +1,4 @@
-package com.nisum.foodcourt.modal;
+package com.nisum.foodcourt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
+
 @Data
 @AllArgsConstructor
 @Builder

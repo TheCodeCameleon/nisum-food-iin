@@ -1,4 +1,4 @@
-package com.nisum.foodcourt.resource.utils;
+package com.nisum.foodcourt.resource.util;
 
 import org.springframework.stereotype.Component;
 

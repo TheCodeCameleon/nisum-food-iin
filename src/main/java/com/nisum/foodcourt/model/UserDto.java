@@ -1,4 +1,4 @@
-package com.nisum.foodcourt.modal;
+package com.nisum.foodcourt.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nisum.foodcourt.entity.Role;
@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserModal {
+public class UserDto {
 
     private Integer id;
     @NotBlank

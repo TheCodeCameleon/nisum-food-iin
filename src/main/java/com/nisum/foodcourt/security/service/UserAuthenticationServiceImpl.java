@@ -1,8 +1,8 @@
 package com.nisum.foodcourt.security.service;
 
+import com.nisum.foodcourt.model.JwtAuthenticationResponse;
+import com.nisum.foodcourt.model.LoginRequest;
 import com.nisum.foodcourt.service.UserPrincipal;
-import com.nisum.foodcourt.modal.JwtAuthenticationResponse;
-import com.nisum.foodcourt.modal.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
